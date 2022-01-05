@@ -22,15 +22,10 @@ while indicador == 1:
     quantidade = int(input('Quantidade de itens comprados ou servico contratado: ')) #variável para receber a quantidade do que foi comprado
     valorUnitario = abs(int(input('Digite o valor unitário em centavos: '))) #variável para receber o valor unitário do que foi comprado/contratado
     valorPorPessoa = []
-    if valorUnitario*quantidade%nPessoas == 0:
-        for i in range(0,nPessoas):
-            p = int(valorUnitario*abs(quantidade)/nPessoas) #preco para cada pessoa
-            valorPorPessoa.insert(i, p)
-    else:
-        for i in range(0, nPessoas - 1):
-            p = int(valorUnitario*abs(quantidade)/nPessoas) #preco para cada pessoa
-            valorPorPessoa.insert(i, p)
-        valorPorPessoa.insert(nPessoas, (valorUnitario*abs(quantidade) - p*(nPessoas-1)))
+    for i in range(0, nPessoas - 1):
+        p = int(valorUnitario*abs(quantidade)/nPessoas) #preco para cada pessoa
+        valorPorPessoa.insert(i, p)
+    valorPorPessoa.insert(nPessoas, (valorUnitario*abs(quantidade) - p*(nPessoas-1)))
     valoresPessoas['valorPorPessoa'] = []
     valoresPessoas['valorPorPessoa'].extend(valorPorPessoa) #inclui a lista de valores por cada pessoa no dicionario
     despesas.append(valoresPessoas.copy())
